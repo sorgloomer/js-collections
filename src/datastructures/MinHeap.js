@@ -66,8 +66,12 @@ export function heap_pop(items, comparison) {
 
 export function heap_sort(items, comparison) {
   const heap = [], result = [];
-  for (let i of items) heap_add(heap, comparison, i);
-  while (heap.length > 0) result.push(heap_pop(heap, comparison));
+  for (let i = 0; i < items.length; i++) {
+    heap_add(heap, comparison, items[i]);
+  }
+  while (heap.length > 0) {
+    result.push(heap_pop(heap, comparison));
+  }
   return result;
 }
 

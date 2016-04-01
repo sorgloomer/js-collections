@@ -17,3 +17,12 @@ export function comparisonBy(selector) {
     return comparisonBy_s(selector);
   }
 }
+
+function fnSelector(selector) {
+  return typeof selector === "function" ? selector : x => x[selector];
+}
+
+export function comparisonMapWith(selector, compare) {
+  const mapper = fnSelector(selector);
+  return (a, b) => compare(mapper(a), mapper(b));
+}
